@@ -1,10 +1,18 @@
 alias be='bundle exec'
 alias bi='bundle install'
 alias bl='bundle list'
+
+# Mojolicious
+alias mapp='./script/*' 
+alias mr='mapp routes'
+alias mt='mapp test'
+alias md='mapp daemon'
+
 alias build='make && { make test || make check; }'
 alias pbuild='perl Makefile.PL && make && make test'
 alias pinstall='pbuild && make install'
 alias pb='perlbrew'
+alias lr='ls -lt | head'
 alias fxml='xmllint --format'
 
 shopt -s cdspell cdable_vars extglob no_empty_cmd_completion histappend
