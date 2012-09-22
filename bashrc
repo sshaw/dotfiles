@@ -12,10 +12,15 @@ alias build='make && { make test || make check; }'
 alias pbuild='perl Makefile.PL && make && make test'
 alias pinstall='pbuild && make install'
 alias pb='perlbrew'
-alias lr='ls -lt | head'
-alias fxml='xmllint --format'
 
-shopt -s cdspell cdable_vars extglob no_empty_cmd_completion histappend
+alias ll=' ls -l'
+alias lr=' ls -lt | head'
+
+alias fxml='xmllint --format'
+alias vxsd='xmllint --noout --schema'
+alias vrng='xmllint --noout --relaxng' # Trang is much better for this...
+
+shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 
 for f in ~/.rvm/scripts/rvm ~/perl5/perlbrew/etc/bashrc; do
     [ -f "$f" ] && source $f
