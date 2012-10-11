@@ -12,6 +12,7 @@ alias build='make && { make test || make check; }'
 alias pbuild='perl Makefile.PL && make && make test'
 alias pinstall='pbuild && make install'
 alias pb='perlbrew'
+alias pd='perldoc'
 
 alias ll=' ls -l'
 alias lr=' ls -lt | head'
