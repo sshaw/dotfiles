@@ -3,7 +3,7 @@ alias bi='bundle install'
 alias bl='bundle list'
 
 # Mojolicious
-alias mapp='./script/*' 
+alias mapp='./script/*'
 alias mr='mapp routes'
 alias mt='mapp test'
 alias md='mapp daemon'
@@ -83,6 +83,14 @@ canspell()
     [ -n "$*" ] && { echo $@ | aspell -a | grep '^&'; } && return 1 || return 0;
 }
 
+# usage: newmod [PATTERN]
+# `less -F` no good on Dariwn
+newmod()
+{
+    local match=${1:-.}
+    mojo get -r metacpan.org/feed/recent 'item > title' text | grep -i "$match" | more -F
+}
+
 # Perl Module Exports
 # usage: pme MODULE
 pme()
@@ -117,6 +125,6 @@ rake()
 # usage: rmedir DIR [OPTIONS]
 rmedir()
 {
-   dir=$1; shift
+   local dir=$1; shift
    [ -n "$dir" ] && find "$dir" -empty -a -type d $* -print0 | xargs -0 rmdir
 }
