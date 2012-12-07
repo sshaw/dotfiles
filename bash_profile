@@ -1,6 +1,7 @@
 
 [ -s ~/.bashrc ] && source ~/.bashrc
 
+export PS1="\w >"
 export RI=-fansi
 export RUBYOPT=rubygems
 export EDITOR="emacs --no-init"
