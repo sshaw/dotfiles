@@ -29,6 +29,4 @@ fi
 export LESS
 export JAVA_HOME
 
-{ type -t rvm && rvm use default; } > /dev/null 2>&1
-gem server --daemon
-
+#gem server --daemon

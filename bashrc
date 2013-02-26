@@ -30,6 +30,8 @@ for f in ~/.rvm/scripts/rvm ~/perl5/perlbrew/etc/bashrc; do
     [ -f "$f" ] && source $f
 done
 
+{ type -t rvm && rvm use default; } > /dev/null 2>&1
+
 # `write` to a user on all of their TTYs
 # usage: annoy USER MESSAGE
 annoy()
