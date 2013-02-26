@@ -29,4 +29,7 @@ fi
 export LESS
 export JAVA_HOME
 
-#gem server --daemon
+if which lsof > /dev/null
+then
+    { lsof -i :8808 || gem server --daemon --port 8808; } > /dev/null 2>&1
+fi
