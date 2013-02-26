@@ -20,11 +20,15 @@ LESS=-FRi
 #JAVA_HOME=/usr/java/latest on Fed 10
 
 if [ $(uname -s) == "Darwin" ]
-then 
-    # On OS X -F quits without displaying 
+then
+    # On OS X -F quits without displaying
     LESS=-Ri
-    JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home    
+    JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 fi
 
 export LESS
 export JAVA_HOME
+
+{ type -t rvm && rvm use default; } > /dev/null 2>&1
+gem server --daemon
+

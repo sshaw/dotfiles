@@ -1,3 +1,4 @@
+alias bc='bundle console'
 alias be='bundle exec'
 alias bi='bundle install'
 alias bl='bundle list'
@@ -20,6 +21,8 @@ alias lr=' ls -lt | head'
 alias fxml='xmllint --format'
 alias vxsd='xmllint --noout --schema'
 alias vrng='xmllint --noout --relaxng' # Trang is much better for this...
+
+alias gd='git diff'
 
 shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 
@@ -118,7 +121,13 @@ psh()
 rake()
 {
     local r=$(which rake)
-    [ -f "./Gemfile" ] && bundle exec 'rake' "$@" || "$r" "$@"
+    if [ -f "./.components" ]; then
+	bundle exec padrino 'rake' "$@"
+    elif [ -f "./Gemfile" -a -f "./Rakefile" ]; then
+	bundle exec 'rake' "$@" 
+    else 
+	"$r" "$@"
+    fi
 }
 
 # rm empty directories
