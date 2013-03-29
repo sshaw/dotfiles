@@ -15,14 +15,15 @@ alias pinstall='pbuild && make install'
 alias pb='perlbrew'
 alias pd='perldoc'
 
-alias ll=' ls -l'
-alias lr=' ls -lt | head'
-
+alias ll=' ls -lh'
 alias fxml='xmllint --format'
 alias vxsd='xmllint --noout --schema'
 alias vrng='xmllint --noout --relaxng' # Trang is much better for this...
 
-alias gd='git diff'
+alias gd=' git diff'
+alias gs=' git status'
+alias gc='git commit' # Never did use `gc`
+alias gp='git pull'
 
 shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 
@@ -88,6 +89,13 @@ canspell()
     [ -n "$*" ] && { echo $@ | aspell -a | grep '^&'; } && return 1 || return 0;
 }
 
+# ls recent
+# usage: lr [DIR]
+lr()
+{
+    ls -lt "$@" | head
+}
+
 # usage: newmod [PATTERN]
 # `less -F` no good on Dariwn
 newmod()
@@ -126,8 +134,8 @@ rake()
     if [ -f "./.components" ]; then
 	bundle exec padrino 'rake' "$@"
     elif [ -f "./Gemfile" -a -f "./Rakefile" ]; then
-	bundle exec 'rake' "$@" 
-    else 
+	bundle exec 'rake' "$@"
+    else
 	"$r" "$@"
     fi
 }

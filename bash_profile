@@ -2,6 +2,7 @@
 [ -s ~/.bashrc ] && source ~/.bashrc
 
 export PS1="\w >"
+export GREP_OPTIONS=--color
 export RI=-fansi
 export RUBYOPT=rubygems
 export EDITOR="emacs --no-init"
