@@ -15,6 +15,7 @@ alias pinstall='pbuild && make install'
 alias pb='perlbrew'
 alias pd='perldoc'
 
+type -t pgrep > /dev/null || alias pgrep='ps ax | grep -v grep | egrep'
 alias ll=' ls -lh'
 alias fxml='xmllint --format'
 alias vxsd='xmllint --noout --schema'
@@ -138,6 +139,23 @@ rake()
     else
 	"$r" "$@"
     fi
+}
+
+# Use RDoc server over `ri`
+ri()
+{
+    if [ -z "$1" ]; then
+	command ri	
+	return
+    fi
+    
+    # TODO: try to use whatever browser is currently open
+    url="http://localhost:8808/rdoc?q=$*"
+    if [ $(uname -s) == "Darwin" ]; then       
+	open -a Opera "$url"	
+    else    
+	opera "$url" &
+    fi    
 }
 
 # rm empty directories
