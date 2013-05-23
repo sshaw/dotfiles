@@ -1,1 +1,1 @@
--l -I t/lib
+-l -I t -I t/lib
