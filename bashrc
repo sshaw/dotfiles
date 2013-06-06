@@ -8,15 +8,13 @@ alias mapp='./script/*'
 alias mr='mapp routes'
 alias mt='mapp test'
 alias md='mapp daemon'
+###
 
-alias build='make && { make test || make check; }'
 alias pbuild='perl Makefile.PL && make && make test'
 alias pinstall='pbuild && make install'
 alias pb='perlbrew'
 alias pd='perldoc'
 
-type -t pgrep > /dev/null || alias pgrep='ps ax | grep -v grep | egrep'
-alias ll=' ls -lh'
 alias fxml='xmllint --format'
 alias vxsd='xmllint --noout --schema'
 alias vrng='xmllint --noout --relaxng' # Trang is much better for this...
@@ -25,6 +23,12 @@ alias gd=' git diff'
 alias gs=' git status'
 alias gc='git commit' # Never did use `gc`
 alias gp='git pull'
+
+type -t pgrep > /dev/null || alias pgrep='ps ax | grep -v grep | egrep'
+alias build='make && { make test || make check; }'
+alias j=' jobs'
+alias ll=' ls -lh'
+alias rg='grep -R'
 
 shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 
