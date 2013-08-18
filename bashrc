@@ -28,7 +28,7 @@ type -t pgrep > /dev/null || alias pgrep='ps ax | grep -v grep | egrep'
 alias build='make && { make test || make check; }'
 alias j=' jobs'
 alias ll=' ls -lh'
-alias rg='grep -R'
+alias rg='egrep -R'
 
 shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 
