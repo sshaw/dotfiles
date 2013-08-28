@@ -1,0 +1,7 @@
+[user]
+	name = sshaw
+	email = skye.shaw@gmail.com
+[color]
+	ui = true
+[core]
+	excludesfile = /Users/sshaw/.gitignore
