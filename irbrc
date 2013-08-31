@@ -3,17 +3,29 @@ require "irb/ext/save-history"
 require "pp"
 require "rubygems"
 
+versions = {
+  "jruby"   => "jirb",
+  "macruby" => "macirb",
+  "rbx"     => "irbx",
+  "ree"     => "irbee"
+}
+  
+target  = Object.const_defined?("RUBY_ENGINE") ? RUBY_ENGINE : RUBY_PLATFORM
+irbname = versions.fetch(target,"irb")
+
+# Oh MacRuby..!
 IRB.conf[:USE_READLINE] = true
 IRB.conf[:SAVE_HISTORY] = 10_000
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:PROMPT][:CUSTOM] = {
-  :PROMPT_I => "#{"j" if RUBY_PLATFORM=="java"}irb [#{RUBY_VERSION}]$ ",
+  :PROMPT_I => "#{irbname} [#{RUBY_VERSION}]$ ",
   :PROMPT_C => "%i* ",
   :PROMPT_N => "%i{ ",
   :PROMPT_S => "%i%l ",
   :RETURN   => "=> %s\n"
 }
 
+# We probably care about irbname here
 custom = IRB.conf[:PROMPT][:CUSTOM]
 if defined?(Rails)
   custom[:PROMPT_I] = "rails [#{Rails.version}]$ "

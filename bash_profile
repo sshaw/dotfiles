@@ -1,7 +1,6 @@
 
 [ -s ~/.bashrc ] && source ~/.bashrc
 
-export CDPATH=$HOME
 export PS1="\w >"
 export GOROOT=/usr/local/go
 export GREP_OPTIONS=--color
