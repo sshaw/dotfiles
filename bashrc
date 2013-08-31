@@ -159,7 +159,10 @@ ri()
 	open -a Opera "$url"	
     else    
 	opera "$url" &
-    fi    
+    fi
+
+    # Fallback if command failed
+    [ $? -ne 0 ] && command ri "$@"
 }
 
 # rm empty directories
