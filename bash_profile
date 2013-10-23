@@ -2,6 +2,7 @@
 [ -s ~/.bashrc ] && source ~/.bashrc
 
 export PS1="\w >"
+
 export GOROOT=/usr/local/go
 export GREP_OPTIONS=--color
 export RI=-fansi
@@ -9,7 +10,7 @@ export RUBYOPT=-rubygems
 export EDITOR="emacs --no-init"
 export ESHELL=bash
 export PAGER=less
-export PATH=$PATH:/usr/sbin:/usr/local/sbin:$GOROOT/bin:$HOME/usr/bin
+export PATH=$PATH:/usr/sbin:/usr/local/sbin:$GOROOT/bin:$HOME/usr/bin:$HOME/.cask/bin
 export PERLDOC=-MPod::Text::Ansi
 # Interpret ANSI codes and don't warn about a bin file
 export PERLDOC_PAGER="less -fR"
@@ -26,8 +27,12 @@ then
     # On OS X -F quits without displaying
     LESS=-Ri
     JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+
+    # For Cask
+    EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
 fi
 
+export EMACS
 export LESS
 export JAVA_HOME
 
