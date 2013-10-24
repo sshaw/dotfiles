@@ -10,7 +10,7 @@ export RUBYOPT=-rubygems
 export EDITOR="emacs --no-init"
 export ESHELL=bash
 export PAGER=less
-export PATH=$PATH:/usr/sbin:/usr/local/sbin:$GOROOT/bin:$HOME/usr/bin:$HOME/.cask/bin
+export PATH=$HOME/usr/bin:$PATH:/usr/sbin:/usr/local/sbin:$GOROOT/bin:$HOME/.cask/bin
 export PERLDOC=-MPod::Text::Ansi
 # Interpret ANSI codes and don't warn about a bin file
 export PERLDOC_PAGER="less -fR"
