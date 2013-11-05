@@ -27,6 +27,11 @@ alias gp='git pull'
 type -t pgrep > /dev/null || alias pgrep='ps ax | grep -v grep | egrep'
 alias build='make && { make test || make check; }'
 alias j=' jobs'
+
+alias ls=' ls -FG'
+# BSD vs GNU
+ls --color &> /dev/null && alias ls=' ls -F --color=auto'
+
 alias ll=' ls -lh'
 alias rg='egrep -R'
 
@@ -43,8 +48,8 @@ done
 annoy()
 {
     if [ $# -lt 2 ]; then
-	echo usage: $FUNCNAME USER MESSAGE
-	return 1
+        echo usage: $FUNCNAME USER MESSAGE
+        return 1
     fi
 
     local user=$1; shift
@@ -52,13 +57,13 @@ annoy()
     local ttys=$(who | perl -lane"print \$F[1] if /\b$user\b/")
 
     if [ -z "$ttys" ]; then
-	echo $user is not logged in
-	return 2
+        echo $user is not logged in
+        return 2
     fi
 
     for tty in $ttys; do
-	[ "$tty" == ":0" -o "$tty" == "console" ] && continue     # Skip the console
-	echo $message | write $user $tty || return
+        [ "$tty" == ":0" -o "$tty" == "console" ] && continue     # Skip the console
+        echo "$message" | write $user $tty || return
     done
 }
 
@@ -91,14 +96,24 @@ bigfile()
 # $* instead of $@
 canspell()
 {
-    [ -n "$*" ] && { echo $@ | aspell -a | grep '^&'; } && return 1 || return 0;
+    [ -n "$*" ] && { echo "$@" | aspell -a | grep '^&'; } && return 1 || return 0;
 }
 
 # ls recent
-# usage: lr [DIR]
+# usage: lr [-N] [OPTIONS] [DIR]
 lr()
 {
-    ls -lt "$@" | head
+    local n
+
+    if [[ $1 =~ ^-[0-9]+$ ]]
+    then
+      n=$1
+      shift
+    fi
+
+    # Force color and skip ls summary
+    # BSD; note GNU ls will need --color=force
+    CLICOLOR_FORCE=1 ls -lt "$@" | perl -ne'print unless $.==1' | head $n
 }
 
 # usage: newmod [PATTERN]
@@ -137,11 +152,11 @@ rake()
 {
     local r=$(which rake)
     if [ -f "./.components" ]; then
-	bundle exec padrino 'rake' "$@"
+        bundle exec padrino 'rake' "$@"
     elif [ -f "./Gemfile" -a -f "./Rakefile" ]; then
-	bundle exec 'rake' "$@"
+        bundle exec 'rake' "$@"
     else
-	"$r" "$@"
+        "$r" "$@"
     fi
 }
 
@@ -149,16 +164,16 @@ rake()
 ri()
 {
     if [ -z "$1" ]; then
-	command ri	
-	return
+        command ri
+        return
     fi
-    
+
     # TODO: try to use whatever browser is currently open
     url="http://localhost:8808/rdoc?q=$*"
-    if [ $(uname -s) == "Darwin" ]; then       
-	open -a Opera "$url"	
-    else    
-	opera "$url" &
+    if [ $(uname -s) == "Darwin" ]; then
+        open -a Opera "$url"
+    else
+        opera "$url" &
     fi
 
     # Fallback if command failed
