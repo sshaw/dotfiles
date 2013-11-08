@@ -108,7 +108,7 @@ _error()
 # usage: gh-grep [OPTIONS] pattern
 gh-grep()
 {
-    local github="http://github.com"
+    local github="https://github.com"
     local remote="origin"
 
     local branch=$(git symbolic-ref HEAD 2>/dev/null)
@@ -119,11 +119,13 @@ gh-grep()
     local dir=$(git config --get "remote.$remote.url")
     [ -z "$dir" ] && _error "No remote named $remote"
 
+    # account for https://... and git@...
+    dir=${dir#$github/}
     dir=${dir##*:}
     dir=${dir%.*}
 
     # Not sure about color=always
-    git grep -n --full-name --color=always "$@" | perl -laF'(:)' -ne"BEGIN{\$\"=undef}; print qq{https://github.com/sshaw/jaxb2ruby/tree/master/\$F[0]#L\$F[2]@F[3..\$#F]}"
+    git grep -n --full-name --color=always "$@" | perl -laF'(:)' -ne"BEGIN{\$\"=undef}; print qq{$github/$dir/tree/$branch/\$F[0]#L\$F[2]@F[3..\$#F]}"
 }
 
 # ls recent
