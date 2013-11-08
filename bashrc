@@ -20,7 +20,7 @@ alias vxsd='xmllint --noout --schema'
 alias vrng='xmllint --noout --relaxng' # Trang is much better for this...
 
 alias gd=' git diff'
-alias gs=' git status'
+alias gs=' git status -sb'
 alias gc='git commit' # Never did use `gc`
 alias gp='git pull'
 
@@ -97,6 +97,33 @@ bigfile()
 canspell()
 {
     [ -n "$*" ] && { echo "$@" | aspell -a | grep '^&'; } && return 1 || return 0;
+}
+
+_error()
+{
+    echo "$*" >&2
+    exit 1
+}
+
+# usage: gh-grep [OPTIONS] pattern
+gh-grep()
+{
+    local github="http://github.com"
+    local remote="origin"
+
+    local branch=$(git symbolic-ref HEAD 2>/dev/null)
+    [ -z "$branch" ] && _error "Detached head"
+
+    branch=${branch##*/}
+
+    local dir=$(git config --get "remote.$remote.url")
+    [ -z "$dir" ] && _error "No remote named $remote"
+
+    dir=${dir##*:}
+    dir=${dir%.*}
+
+    # Not sure about color=always
+    git grep -n --full-name --color=always "$@" | perl -laF'(:)' -ne"BEGIN{\$\"=undef}; print qq{https://github.com/sshaw/jaxb2ruby/tree/master/\$F[0]#L\$F[2]@F[3..\$#F]}"
 }
 
 # ls recent
