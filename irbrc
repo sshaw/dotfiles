@@ -48,4 +48,5 @@ if defined?(ActiveRecord)
   end
 end
 
-def q!; quit; end
+def q!; quit;    end
+def r!; reload!; end
