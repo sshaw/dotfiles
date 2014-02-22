@@ -3,5 +3,10 @@
 	email = skye.shaw@gmail.com
 [color]
 	ui = true
-[core]
-	excludesfile = /Users/sshaw/.gitignore
+[alias]
+	br = branch
+	co = checkout
+	hist = log --graph --decorate
+	ps = push
+	pl = pull
+	st = status -sb
