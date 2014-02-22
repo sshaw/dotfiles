@@ -37,7 +37,7 @@ alias rg='egrep -R'
 
 shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 
-for f in ~/.rvm/scripts/rvm ~/perl5/perlbrew/etc/bashrc; do
+for f in ~/.rvm/scripts/rvm ~/perl5/perlbrew/etc/bashrc ~/.gvm/bin/gvm-init.sh; do
     [ -f "$f" ] && source $f
 done
 
@@ -175,6 +175,15 @@ pmv()
 psh()
 {
     perl -MData::Dump=dd -wne'BEGIN { $p = "perl > "; print $p }; dd eval; print $p'
+}
+
+rails()
+{
+    if [ -f "./Gemfile" ]; then
+        bundle exec rails "$@"
+    else
+        command rails "$@"
+    fi
 }
 
 rake()
