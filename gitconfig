@@ -7,7 +7,7 @@
 	br = branch
 	co = checkout
 	ci = commit
-	cip = "!f() { set -x; local m=$1; shift; git commit -am \"$m\" && git push "$@"; }; f"
+	cip = "!f() { local m=$1; shift; git commit -am \"$m\" && git push "$@"; }; f"
 	hist = log --graph --decorate
 	ps = push
 	pst = push --tags
