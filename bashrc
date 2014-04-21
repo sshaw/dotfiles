@@ -124,7 +124,7 @@ gh_grep()
     dir=${dir##*:}
     dir=${dir%.*}
 
-    git grep -n --full-name "$@" | perl -aF'([-:])' -MData::Dump=dd -ne"
+    git grep -n --full-name "$@" | perl -aF'([-:])' -ne"
       BEGIN{\$\"=undef}
       print /^--$/ ? \$_ : qq{$github/$dir/tree/$branch/\$F[0]#L\$F[2]@F[3..\$#F]}
     "
