@@ -106,7 +106,7 @@ _error()
 }
 
 # usage: gh-grep [OPTIONS] pattern
-gh-grep()
+gh_grep()
 {
     local github="https://github.com"
     local remote="origin"
@@ -124,8 +124,10 @@ gh-grep()
     dir=${dir##*:}
     dir=${dir%.*}
 
-    # Not sure about color=always
-    git grep -n --full-name --color=always "$@" | perl -laF'(:)' -ne"BEGIN{\$\"=undef}; print qq{$github/$dir/tree/$branch/\$F[0]#L\$F[2]@F[3..\$#F]}"
+    git grep -n --full-name "$@" | perl -aF'([-:])' -MData::Dump=dd -ne"
+      BEGIN{\$\"=undef}
+      print /^--$/ ? \$_ : qq{$github/$dir/tree/$branch/\$F[0]#L\$F[2]@F[3..\$#F]}
+    "
 }
 
 # ls recent
