@@ -3,6 +3,8 @@
         email = skye.shaw@gmail.com
 [color]
         ui = true
+[push]
+        default = simple
 [alias]
         br = branch
         co = checkout

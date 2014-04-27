@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: Broken now with elinks.conf, it needs to go to ~/.elinks/elinks.conf
+
 self=$(basename "$0")
 skip=${1##--skip=}
 
