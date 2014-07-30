@@ -13,7 +13,7 @@ versions = {
   "rbx"     => "irbx",
   "ree"     => "irbee"
 }
-  
+
 target  = Object.const_defined?("RUBY_ENGINE") ? RUBY_ENGINE : RUBY_PLATFORM
 irbname = versions.fetch(target,"irb")
 
@@ -40,12 +40,18 @@ end
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 
 if defined?(ActiveRecord)
+  begin
+    require "hirb"
+    extend Hirb::Console
+  rescue LoadError
+  end
+
   require "logger"
   ActiveRecord::Base.logger = Logger.new(STDERR)
 
   if File.exists?("NUL") # Too lazy now...
     if defined?(ActiveSupport::LogSubscriber)
-      ActiveSupport::LogSubscriber.colorize_logging = false    
+      ActiveSupport::LogSubscriber.colorize_logging = false
     else
       ActiveRecord::Base.colorize_logging = false
     end

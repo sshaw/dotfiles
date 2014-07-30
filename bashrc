@@ -27,6 +27,7 @@ alias gp='git pull'
 type -t pgrep > /dev/null || alias pgrep='ps ax | grep -v grep | egrep'
 alias build='make && { make test || make check; }'
 alias j=' jobs'
+alias q=' exit'
 
 alias ls=' ls -FG'
 # BSD vs GNU
