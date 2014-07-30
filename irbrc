@@ -39,12 +39,14 @@ end
 
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 
+begin
+  require "hirb"
+  extend Hirb::Console
+rescue LoadError
+end
+
 if defined?(ActiveRecord)
-  begin
-    require "hirb"
-    extend Hirb::Console
-  rescue LoadError
-  end
+  Hirb.enable if defined? Hirb
 
   require "logger"
   ActiveRecord::Base.logger = Logger.new(STDERR)
