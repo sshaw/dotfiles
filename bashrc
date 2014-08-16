@@ -42,7 +42,8 @@ for f in \
     ~/.rvm/scripts/rvm \
     ~/perl5/perlbrew/etc/bashrc \
     ~/.gvm/bin/gvm-init.sh \
-    /usr/local/share/chruby/chruby.sh; do
+    /usr/local/share/chruby/chruby.sh \
+    /usr/local/share/chruby/auto.sh; do
 
     [ -f "$f" ] && source $f
 done
