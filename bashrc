@@ -41,14 +41,28 @@ shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 for f in \
     ~/.rvm/scripts/rvm \
     ~/perl5/perlbrew/etc/bashrc \
-    ~/.gvm/bin/gvm-init.sh \
-    /usr/local/share/chruby/chruby.sh \
-    /usr/local/share/chruby/auto.sh; do
+    ~/.gvm/bin/gvm-init.sh; do
+    # /usr/local/share/chruby/chruby.sh \
+    # /usr/local/share/chruby/auto.sh; do
 
     [ -f "$f" ] && source $f
 done
 
 { type -t rvm && rvm use default; } > /dev/null 2>&1
+
+
+for cmd in rails rspec; do
+  eval "
+    $cmd() {
+      local exe=\$(which $cmd)
+      if [ -f "./Gemfile" ]; then
+        bundle exec $cmd \"\$@\"
+      else
+        \$exe \"\$@\"
+      fi
+    }
+"
+done
 
 # `write` to a user on all of their TTYs
 # usage: annoy USER MESSAGE
@@ -184,15 +198,6 @@ pmv()
 psh()
 {
     perl -MData::Dump=dd -wne'BEGIN { $p = "perl > "; print $p }; dd eval; print $p'
-}
-
-rails()
-{
-    if [ -f "./Gemfile" ]; then
-        bundle exec rails "$@"
-    else
-        command rails "$@"
-    fi
 }
 
 rake()
