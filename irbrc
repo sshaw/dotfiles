@@ -3,6 +3,9 @@ require "irb/ext/save-history"
 require "pp"
 require "rubygems"
 
+def q!; quit;   end
+def r!; reload! end
+
 def prompt(name, version)
   sprintf "%s [%s] (%s)$ ", name, version, File.basename(Dir.pwd)
 end
@@ -39,26 +42,27 @@ end
 
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 
-begin
-  require "hirb"
-  extend Hirb::Console
-rescue LoadError
-end
-
-if defined?(ActiveRecord)
-  Hirb.enable if defined? Hirb
-
+if defined?(ActiveRecord) || defined?(Moped)
   require "logger"
-  ActiveRecord::Base.logger = Logger.new(STDERR)
+  logger = Logger.new(STDERR)
 
-  if File.exists?("NUL") # Too lazy now...
-    if defined?(ActiveSupport::LogSubscriber)
-      ActiveSupport::LogSubscriber.colorize_logging = false
-    else
-      ActiveRecord::Base.colorize_logging = false
+  if defined?(Moped)
+    Moped.logger = logger
+  else
+    begin 
+      require "hirb" 
+      extend Hirb::Console
+    rescue LoadError
+    end
+
+    ActiveRecord::Base.logger = logger
+
+    if File.exists?("NUL") # Too lazy now...
+      if defined?(ActiveSupport::LogSubscriber)
+        ActiveSupport::LogSubscriber.colorize_logging = false    
+      else
+        ActiveRecord::Base.colorize_logging = false
+      end
     end
   end
 end
-
-def q!; quit;   end
-def r!; reload! end
