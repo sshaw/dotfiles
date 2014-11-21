@@ -1,3 +1,6 @@
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
 # Don't use natural scrolling, false means use good ol' scrolling
 defaults write "Apple Global Domain" com.apple.swipescrolldirection -bool false
 
