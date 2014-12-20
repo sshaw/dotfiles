@@ -10,7 +10,9 @@
         co = checkout
         ci = commit
         cip = "!f() { local m=$1; shift; git commit -am \"$m\" && git push "$@"; }; f"
+	cl = clone
         hist = log --graph --decorate --abbrev-commit
+	lr = for-each-ref --count=10 --sort='-committerdate' --format='%(color:green)%(committerdate:iso) %(color:blue)%(authorname)%09%(color:reset)%(refname:short)'
         ps = push
         pst = push --tags
         pl = pull
