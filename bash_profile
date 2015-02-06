@@ -11,7 +11,7 @@ export EDITOR="emacs --no-init"
 export ESHELL=bash
 export CDPATH=$HOME/code
 export PAGER=less
-export PATH=$HOME/bin:$HOME/usr/bin:$PATH:/usr/sbin:/usr/local/sbin:$GOROOT/bin:$HOME/.cask/bin
+export PATH=$PATH:$HOME/.rvm/bin:$HOME/bin:$HOME/usr/bin:/usr/sbin:/usr/local/sbin:$GOROOT/bin:$HOME/.cask/bin:$HOME/.jenv/bin
 export PERLDOC=-MPod::Text::Ansi
 # Interpret ANSI codes and don't warn about a bin file
 export PERLDOC_PAGER="less -fR"
@@ -43,4 +43,3 @@ if which lsof > /dev/null
 then
     { lsof -i :8808 || gem server --daemon --port 8808; } > /dev/null 2>&1
 fi
-
