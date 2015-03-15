@@ -173,7 +173,7 @@ lr()
 newmod()
 {
     local match=${1:-.}
-    mojo get -r metacpan.org/feed/recent 'item > title' text | grep -i "$match" | more -F
+    mojo get -r metacpan.org/feed/recent 'item > title' text | egrep -i "$match" | more -F
 }
 
 # Perl Module Exports
