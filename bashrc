@@ -51,7 +51,7 @@ done
 { type -t rvm && rvm use default; } > /dev/null 2>&1
 
 
-for cmd in rails rspec; do
+for cmd in cap rails rspec; do
   eval "
     $cmd() {
       local exe=\$(which $cmd)
