@@ -36,6 +36,8 @@ ls --color &> /dev/null && alias ls=' ls -F --color=auto'
 alias ll=' ls -lh'
 alias rg='egrep -R'
 
+alias sctl=systemctl
+
 shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 
 for f in \
