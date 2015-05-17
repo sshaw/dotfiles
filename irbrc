@@ -6,6 +6,14 @@ require "rubygems"
 def q!; quit;   end
 def r!; reload! end
 
+def echo!
+  if conf.echo
+    conf.echo = false
+  else
+    conf.echo = true
+  end
+end
+
 def prompt(name, version)
   sprintf "%s [%s] (%s)$ ", name, version, File.basename(Dir.pwd)
 end
@@ -49,8 +57,8 @@ if defined?(ActiveRecord) || defined?(Moped)
   if defined?(Moped)
     Moped.logger = logger
   else
-    begin 
-      require "hirb" 
+    begin
+      require "hirb"
       extend Hirb::Console
     rescue LoadError
     end
@@ -59,7 +67,7 @@ if defined?(ActiveRecord) || defined?(Moped)
 
     if File.exists?("NUL") # Too lazy now...
       if defined?(ActiveSupport::LogSubscriber)
-        ActiveSupport::LogSubscriber.colorize_logging = false    
+        ActiveSupport::LogSubscriber.colorize_logging = false
       else
         ActiveRecord::Base.colorize_logging = false
       end
