@@ -7,11 +7,7 @@ def q!; quit;   end
 def r!; reload! end
 
 def echo!
-  if conf.echo
-    conf.echo = false
-  else
-    conf.echo = true
-  end
+  conf.echo = !conf.echo
 end
 
 def prompt(name, version)
