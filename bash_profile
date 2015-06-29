@@ -9,7 +9,6 @@ export RI=-fansi
 export RUBYOPT=-rubygems
 export EDITOR="emacs --no-init"
 export ESHELL=bash
-export CDPATH=$HOME/code
 export PAGER=less
 export PATH=$PATH:$HOME/.rvm/bin:$HOME/bin:$HOME/usr/bin:/usr/sbin:/usr/local/sbin:$GOROOT/bin:$HOME/.cask/bin:$HOME/.jenv/bin
 export PERLDOC=-MPod::Text::Ansi
