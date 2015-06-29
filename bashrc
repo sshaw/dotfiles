@@ -58,10 +58,12 @@ for cmd in cap rails rspec; do
   eval "
     $cmd() {
       local exe=\$(which $cmd)
-      if [ -f "./Gemfile" ]; then
+      if [ -x "./bin/$cmd" ]; then
+        ./bin/$cmd \"\$@\"
+      elif [ -f "./Gemfile" ]; then
         bundle exec $cmd \"\$@\"
       else
-        \$exe \"\$@\"
+        command $cmd \"\$@\"
       fi
     }
 "
@@ -205,8 +207,10 @@ psh()
 
 rake()
 {
-    local r=$(which rake)
-    if [ -f "./.components" ]; then
+    if [ -x ./bin/rake ]; then
+	./bin/rake "$@"
+    elif [ -f "./.components" ]; then
+	# TODO: I think padrono dropped this
         bundle exec padrino 'rake' "$@"
     elif [ -f "./Gemfile" -a -f "./Rakefile" ]; then
         bundle exec 'rake' "$@"
