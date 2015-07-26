@@ -13,6 +13,8 @@
 	cl = clone
         hist = log --graph --decorate --abbrev-commit
 	lr = for-each-ref --count=10 --sort='-committerdate' --format='%(color:green)%(committerdate:iso) %(color:red)%(objectname:short) %(color:blue)%(authorname)%09%(color:reset)%(refname:short)'
+	lrt = !git lr refs/tags
+	lrb = !git lr refs/heads refs/remotes
         ps = push
         pst = push --tags
         pl = pull
