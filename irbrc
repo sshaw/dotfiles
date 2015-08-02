@@ -1,10 +1,18 @@
-require "irb/completion"
-require "irb/ext/save-history"
+begin
+  require "bond"
+  Bond.start
+rescue LoadError
+  require "irb/completion"
+end
+
 require "pp"
 require "rubygems"
 
+def j;  jobs;   end
 def q!; quit;   end
 def r!; reload! end
+
+alias :r :require
 
 def echo!
   conf.echo = !conf.echo
@@ -24,8 +32,6 @@ versions = {
 target  = Object.const_defined?("RUBY_ENGINE") ? RUBY_ENGINE : RUBY_PLATFORM
 irbname = versions.fetch(target,"irb")
 
-# Oh MacRuby..!
-IRB.conf[:USE_READLINE] = true
 IRB.conf[:SAVE_HISTORY] = 10_000
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:PROMPT][:CUSTOM] = {
