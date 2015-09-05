@@ -38,7 +38,7 @@ export JAVA_HOME
 
 [ -f ~/.oldpwd ] && export OLDPWD=$(< ~/.oldpwd)
 
-if which lsof > /dev/null
-then
-    { lsof -i :8808 || gem server --daemon --port 8808; } > /dev/null 2>&1
-fi
+# if which lsof > /dev/null
+# then
+#     { lsof -i :8808 || gem server --daemon --port 8808; } > /dev/null 2>&1
+# fi
