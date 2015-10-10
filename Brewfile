@@ -29,6 +29,7 @@ brew "rlwrap" # Readline Wrapper
 brew "rust"
 brew "scala"
 brew "the_silver_searcher"
+brew "wget"
 brew "xz"
 
 cask "mojibar"
