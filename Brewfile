@@ -30,6 +30,7 @@ brew "rename"
 brew "rlwrap" # Readline Wrapper
 brew "rust"
 brew "scala"
+brew "tree"
 brew "the_silver_searcher"
 brew "wget"
 brew "xz"
