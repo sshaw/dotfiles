@@ -3,7 +3,7 @@
 
 export PS1="\w >"
 
-export GOROOT=/usr/local/go
+export GOPATH=$HOME/.go
 export GREP_OPTIONS=--color
 export RI=-fansi
 export RUBYOPT=-rubygems
