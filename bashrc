@@ -222,6 +222,16 @@ rake()
     fi
 }
 
+# Handy when you need to paste & process:
+# > tmp
+# > xmllint --format $(tmp)
+# > perl -nE'do_something($_)' $(tmp)
+tmp() {
+    local path=/tmp/$RANDOM.tmp
+    cat > $path
+    echo $path
+}
+
 # Use RDoc server over `ri`
 ri()
 {
