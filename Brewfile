@@ -1,6 +1,6 @@
+tap "caskroom/cask"
 tap "homebrew/bundle"
 tap "homebrew/php"
-tap "caskroom/cask"
 
 brew "ansiweather"
 brew "aspell"
@@ -36,3 +36,9 @@ brew "wget"
 brew "xz"
 
 cask "mojibar"
+cask "qlcolorcode"
+cask "qlmarkdown"
+cask "qlprettypatch"
+cask "quicklook-csv"
+cask "quicklook-json"
+cask "suspicious-package"
