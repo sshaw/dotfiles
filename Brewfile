@@ -4,6 +4,7 @@ tap "homebrew/php"
 
 brew "ansiweather"
 brew "aspell"
+brew "awscli"
 brew "docker"
 brew "elinks"
 brew "elixir"
