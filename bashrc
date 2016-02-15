@@ -41,6 +41,7 @@ alias ll=' ls -lh'
 alias rg='egrep -R'
 
 alias sctl=systemctl
+alias myip='dig @resolver1.opendns.com myip.opendns.com +short'
 
 shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 
