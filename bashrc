@@ -135,6 +135,12 @@ _error()
     exit 1
 }
 
+# usage: gi list | lang[,lang...]
+gi()
+{
+    curl -L -s https://www.gitignore.io/api/$@
+}
+
 # usage: gh-grep [OPTIONS] pattern
 gh_grep()
 {
