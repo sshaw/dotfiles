@@ -230,6 +230,7 @@ rake()
 tmp() {
     local path=/tmp/$RANDOM.tmp
     cat > $path
+    tmp=$path
     echo $path
 }
 
