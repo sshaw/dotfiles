@@ -25,7 +25,7 @@ alias gs=' git status -sb'
 alias gc='git commit' # Never did use `gc`
 alias gp='git pull'
 
-which -s hub && alias 'git=hub'
+which hub &> /dev/null && alias 'git=hub'
 
 type -t pgrep > /dev/null || alias pgrep='ps ax | grep -v grep | egrep'
 
