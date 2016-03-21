@@ -132,15 +132,16 @@ canspell()
 _error()
 {
     echo "$*" >&2
-    exit 1
 }
 
+# Create gitignore files
 # usage: gi list | lang[,lang...]
 gi()
 {
     curl -L -s https://www.gitignore.io/api/$@
 }
 
+# GitHub grep
 # usage: gh-grep [OPTIONS] pattern
 gh_grep()
 {
@@ -148,12 +149,12 @@ gh_grep()
     local remote="origin"
 
     local branch=$(git symbolic-ref HEAD 2>/dev/null)
-    [ -z "$branch" ] && _error "Detached head"
+    [ -z "$branch" ] && { _error "Detached head"; return 1; }
 
     branch=${branch##*/}
 
     local dir=$(git config --get "remote.$remote.url")
-    [ -z "$dir" ] && _error "No remote named $remote"
+    [ -z "$dir" ] && { _error "No remote named $remote"; return 1; }
 
     # account for https://... and git@...
     dir=${dir#$github/}
