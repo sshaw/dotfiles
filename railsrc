@@ -1,1 +1,1 @@
--m=/Users/sshaw/.rails-template.rb
+-m ~/.rails-template.rb -T --skip-spring
