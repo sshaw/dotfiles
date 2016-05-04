@@ -226,7 +226,7 @@ rake()
     elif [ -f "./Gemfile" -a -f "./Rakefile" ]; then
         bundle exec 'rake' "$@"
     else
-        "$r" "$@"
+        command rake "$@"
     fi
 }
 
