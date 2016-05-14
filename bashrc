@@ -58,7 +58,7 @@ done
 { source $(brew --repository)/Library/Contributions/brew_bash_completion.sh; } > /dev/null 2>&1
 { type -t rvm && rvm use default; } > /dev/null 2>&1
 
-for cmd in cap rails rspec; do
+for cmd in cap rails rspec padrino; do
   eval "
     $cmd() {
       local exe=\$(which $cmd)
