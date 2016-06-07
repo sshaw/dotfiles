@@ -3,6 +3,7 @@
 
 export PS1="\w >"
 
+export DISABLE_SPRING=1
 export GOPATH=$HOME/.go
 export GREP_OPTIONS=--color
 export RI=-fansi

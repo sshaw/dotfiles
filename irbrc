@@ -12,7 +12,9 @@ def j;  jobs;   end
 def q!; quit;   end
 def r!; reload! end
 
-alias :r :require
+def r(lib)
+  require lib.to_s
+end
 
 def echo!
   conf.echo = !conf.echo
