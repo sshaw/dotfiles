@@ -47,9 +47,15 @@ IRB.conf[:PROMPT][:CUSTOM] = {
 # We probably care about irbname here
 custom = IRB.conf[:PROMPT][:CUSTOM]
 if defined?(Rails)
-  custom[:PROMPT_I] = prompt("rails", Rails.version)
+  name = "rails"
+  name << "-#{Rails.env}" unless Rails.env.development?
+
+  custom[:PROMPT_I] = prompt(name, Rails.version)
 elsif defined?(Padrino)
-  custom[:PROMPT_I] = prompt("padrino", Padrino.version)
+  name = "padrino"
+  name << "-#{ENV["RACK_ENV"]}" unless ENV["RACK_ENV"] == "development"
+
+  custom[:PROMPT_I] = prompt(name, Padrino.version)
 end
 
 IRB.conf[:PROMPT_MODE] = :CUSTOM

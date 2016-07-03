@@ -26,6 +26,7 @@ alias gc='git commit' # Never did use `gc`
 alias gp='git pull'
 
 alias rc='rails c'
+alias pc='padrino c'
 
 which hub &> /dev/null && alias 'git=hub'
 
