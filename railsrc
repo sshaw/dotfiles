@@ -1,1 +1,1 @@
--m ~/.rails-template.rb -T --skip-spring
+-m ~/.rails-template.rb -T --skip-spring --skip-turbolinks
