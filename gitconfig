@@ -17,7 +17,11 @@
 	lrb = !git lr refs/heads refs/remotes
         ps = push
         pst = push --tags
-        pl = pull
+	pl = pull
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbi = rebase -i
+	rbs = rebase --skip
         st = status -sb
         # Won't always have GNU sort i.e., sort -V :(
         #ver = "!f() { git tag | grep "$1" | perl -Mversion -ne'push @v, version->parse($_); END { print( (sort @v)[-1], qq|\n| ) }'; }; f"
