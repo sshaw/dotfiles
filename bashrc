@@ -28,6 +28,9 @@ alias gp='git pull'
 alias rc='rails c'
 alias pc='padrino c'
 
+alias dm=docker-machine
+alias dmrun='docker-machine env default && eval "$(docker-machine env default)"'
+
 which hub &> /dev/null && alias 'git=hub'
 
 type -t pgrep > /dev/null || alias pgrep='ps ax | grep -v grep | egrep'
