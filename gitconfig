@@ -25,3 +25,6 @@
         st = status -sb
         # Won't always have GNU sort i.e., sort -V :(
         #ver = "!f() { git tag | grep "$1" | perl -Mversion -ne'push @v, version->parse($_); END { print( (sort @v)[-1], qq|\n| ) }'; }; f"
+
+[include]
+	path = ~/.gitauth
