@@ -51,6 +51,11 @@ alias myip='dig @resolver1.opendns.com myip.opendns.com +short'
 
 shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 
+# export some cdable_vars
+for f in ~/code/*; do
+    [ -d "$f" ] && export $(basename "$f")="$f"
+done
+
 for f in \
     ~/.rvm/scripts/rvm \
     ~/perl5/perlbrew/etc/bashrc \
