@@ -29,7 +29,7 @@ alias rc='rails c'
 alias pc='padrino c'
 
 alias dm=docker-machine
-alias dmrun='docker-machine env default && eval "$(docker-machine env default)"'
+alias dmrun='docker-machine start default && eval "$(docker-machine env default)"'
 
 which hub &> /dev/null && alias 'git=hub'
 
