@@ -6,8 +6,9 @@
 [push]
         default = simple
 [alias]
-        br = branch
-        co = checkout
+	br = branch
+	brf = "!f() { git branch --list "*$1*"; }; f"
+	co = checkout
         ci = commit
         cip = "!f() { local m=$1; shift; git commit -am \"$m\" && git push "$@"; }; f"
 	cl = clone
