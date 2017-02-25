@@ -12,6 +12,8 @@ def j;  jobs;   end
 def q!; quit;   end
 def r!; reload! end
 
+# r:some_thang
+# r "some/thang"
 def r(lib)
   require lib.to_s
 end
@@ -84,3 +86,6 @@ if defined?(ActiveRecord) || defined?(Moped)
     end
   end
 end
+
+local = File.join(Dir.pwd, ".irbrc")
+load local if File.exists?(local)
