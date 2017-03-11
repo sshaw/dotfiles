@@ -66,7 +66,7 @@ for f in \
     [ -f "$f" ] && source $f
 done
 
-{ source $(brew --repository)/Library/Contributions/brew_bash_completion.sh; } > /dev/null 2>&1
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 { type -t rvm && rvm use default; } > /dev/null 2>&1
 
 for cmd in cap rails rspec padrino; do
