@@ -88,4 +88,4 @@ if defined?(ActiveRecord) || defined?(Moped)
 end
 
 local = File.join(Dir.pwd, ".irbrc")
-load local if File.exists?(local)
+load local if local != __FILE__ && File.exists?(local)
