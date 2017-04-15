@@ -49,6 +49,9 @@ alias rg='egrep -R'
 alias sctl=systemctl
 alias myip='dig @resolver1.opendns.com myip.opendns.com +short'
 
+alias uri_escape='perl -MURI::Escape -E"say uri_escape(@ARGV ? shift : (\$_=<>) && chomp && \$_)"'
+alias uri_unescape='perl -MURI::Escape -E"say uri_unescape(@ARGV ? shift : (\$_=<>) && chomp && \$_)"'
+
 shopt -s cdspell cdable_vars cmdhist extglob histappend no_empty_cmd_completion
 
 # export some cdable_vars
