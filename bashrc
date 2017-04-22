@@ -148,11 +148,11 @@ _error()
     echo "$*" >&2
 }
 
-# Create gitignore files
+# Output gitignore files
 # usage: gi list | lang[,lang...]
 gi()
 {
-    curl -L -s https://www.gitignore.io/api/$@
+    wget -O- -q https://www.gitignore.io/api/$1
 }
 
 # GitHub grep
