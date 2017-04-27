@@ -13,6 +13,7 @@ brew "elinks"
 brew "elixir"
 brew "erlang"
 brew "ffmpeg"
+brew "gifsicle"
 brew "global", :args => %w[with-ctags with-pygments]
 brew "go"
 brew "graphviz"
