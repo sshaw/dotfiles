@@ -5,6 +5,11 @@ rescue LoadError
   require "irb/completion"
 end
 
+begin
+  require "pry-toys"
+rescue LoadError
+end
+
 require "pp"
 require "rubygems"
 
