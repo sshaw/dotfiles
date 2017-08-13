@@ -23,6 +23,7 @@ alias vrng='xmllint --noout --relaxng' # Trang is much better for this...
 alias gd=' git diff'
 alias gs=' git status -sb'
 alias gf=' git fetch'
+alias gl=' git log'
 alias gc='git commit' # Never did use `gc`
 alias gp='git pull'
 
