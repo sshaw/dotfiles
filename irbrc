@@ -31,6 +31,23 @@ def prompt(name, version)
   sprintf "%s [%s] (%s)$ ", name, version, File.basename(Dir.pwd)
 end
 
+def cd(path = nil)
+  path ||= Dir.home
+  path = path == "-" && $__dirstack ? $__dirstack : File.expand_path(path)
+  # maybe more $DIRSTACK like one day...
+  pwd = Dir.pwd
+  Dir.chdir(path)
+  $__dirstack = pwd
+  path
+end
+
+def self.method_missing(name, *args)
+  system name.to_s, *args
+  # TODO: Win???
+  # Would be nice to echo nothing
+  $?.exitstatus == 127 ? super : $?.exitstatus
+end
+
 versions = {
   "jruby"   => "jirb",
   "macruby" => "macirb",
