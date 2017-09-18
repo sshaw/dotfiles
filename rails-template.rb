@@ -15,7 +15,7 @@ end
 environment "config.active_record.timestamped_migrations = false"
 environment "config.time_zone = 'Eastern Time (US & Canada)'"
 
-run "rm README.rdoc"
+run "rm -f README.rdoc"
 
 after_bundle do
   run "cap install"
