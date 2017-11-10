@@ -13,6 +13,7 @@ end
 require "pp"
 require "rubygems"
 
+def i(*m) include *m; end
 def j;  jobs;   end
 def q!; quit;   end
 def r!; reload! end
