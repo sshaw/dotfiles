@@ -112,3 +112,36 @@ end
 
 local = File.join(Dir.pwd, ".irbrc")
 load local if local != __FILE__ && File.exists?(local)
+
+local = File.join(Dir.pwd, ".irb-history")
+IRB.conf[:HISTORY_FILE] = local if File.exists?(local)
+
+class HistoryInputMethod < IRB::ReadlineInputMethod
+  def gets
+    l = super
+
+    if ignore_settings.include?("ignoreboth") || ignore_settings.include?("ignorespace")
+      HISTORY.pop and return l if HISTORY[-1].start_with?(" ")
+    end
+
+    if ignore_settings.include?("ignoreboth") || ignore_settings.include?("ignoredups")
+      HISTORY.pop and return l if HISTORY[-1] == HISTORY[-2]
+    end
+
+    HISTORY.pop if ignore_patterns.any? { |pat| HISTORY[-1] =~ pat }
+
+    l
+  end
+
+  private
+
+  def ignore_patterns
+    @ignore_patterns ||= ENV["IRB_HISTCONTROL"].to_s.split(":").map { |pat| Regexp.new(pat) }
+  end
+
+  def ignore_settings
+    @ignore_settings ||= ENV["IRB_HISTIGNORE"].to_s.split(":")
+  end
+end
+
+IRB.conf[:SCRIPT] = HistoryInputMethod.new
