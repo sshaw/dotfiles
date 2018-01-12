@@ -136,11 +136,11 @@ class HistoryInputMethod < IRB::ReadlineInputMethod
   private
 
   def ignore_patterns
-    @ignore_patterns ||= ENV["IRB_HISTCONTROL"].to_s.split(":").map { |pat| Regexp.new(pat) }
+    @ignore_patterns ||= ENV["IRB_HISTIGNORE"].to_s.split(":").map { |pat| Regexp.new(pat) }
   end
 
   def ignore_settings
-    @ignore_settings ||= ENV["IRB_HISTIGNORE"].to_s.split(":")
+    @ignore_settings ||= ENV["IRB_HISTCONTROL"].to_s.split(":")
   end
 end
 
