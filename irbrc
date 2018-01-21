@@ -1,4 +1,5 @@
 begin
+  # Completions are in bondrc
   require "bond"
   Bond.start
 rescue LoadError

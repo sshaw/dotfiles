@@ -1,0 +1,3 @@
+# -*- mode: ruby -*-
+complete(:method => "r", :action => "require")
+complete(:method => "cd", :search => :files)
