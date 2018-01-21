@@ -44,6 +44,9 @@ def cd(path = nil)
 end
 
 def self.method_missing(name, *args)
+  # Commands we don't want to execute
+  return super if %i[x X].freeze.include?(name)
+
   system name.to_s, *args
   # TODO: Win???
   # Would be nice to echo nothing
