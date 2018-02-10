@@ -21,7 +21,7 @@ export HISTFILESIZE=1000
 export HISTCONTROL=ignoreboth
 export IGNOREEOF=default
 export IRB_HISTCONTROL=ignoreboth
-export IRB_HISTIGNORE='q!'
+export IRB_HISTIGNORE='q!:^\s*r\b'
 
 LESS=-FRi
 #JAVA_HOME=/usr/java/latest on Fed 10
