@@ -7,6 +7,16 @@ rescue LoadError
 end
 
 begin
+  require "hirb"
+  extend Hirb::Console
+
+  def hirb!
+    Hirb::View.enabled? ? Hirb.disable : Hirb.enable
+  end
+rescue LoadError
+end
+
+begin
   require "pry-toys"
 rescue LoadError
 end
@@ -96,12 +106,6 @@ if defined?(ActiveRecord) || defined?(Moped)
   if defined?(Moped)
     Moped.logger = logger
   else
-    begin
-      require "hirb"
-      extend Hirb::Console
-    rescue LoadError
-    end
-
     ActiveRecord::Base.logger = logger
 
     if File.exists?("NUL") # Too lazy now...
