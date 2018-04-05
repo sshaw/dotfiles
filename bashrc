@@ -33,8 +33,6 @@ alias pc='padrino c'
 alias dm=docker-machine
 alias dmrun='docker-machine start default && eval "$(docker-machine env default)"'
 
-alias node='NODE_NO_READLINE=1 rlwrap node'
-
 which hub &> /dev/null && alias 'git=hub'
 
 type -t pgrep > /dev/null || alias pgrep='ps ax | grep -v grep | egrep'
@@ -150,6 +148,15 @@ canspell()
 _error()
 {
     echo "$*" >&2
+}
+
+# Node shell
+nsh()
+{
+    local init="" path="$(npm config get prefix)/lib/node_modules"
+    [ -f ~/.noderc ] && init=$(< ~/.noderc)
+
+    NODE_NO_READLINE=1 NODE_PATH="$path" rlwrap node -i -e "$init"
 }
 
 # Output gitignore files
