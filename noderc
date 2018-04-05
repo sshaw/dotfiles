@@ -6,6 +6,6 @@ function load(name) {
   catch(e) {
     if(e.code !== 'MODULE_NOT_FOUND') throw e;
   }
-};
+}
 
 const r = require, t = load('prototoy');
