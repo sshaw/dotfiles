@@ -106,6 +106,14 @@ if defined?(ActiveRecord) || defined?(Moped)
   if defined?(Moped)
     Moped.logger = logger
   else
+    def arerr(m)
+      if defined? table
+        table(m.errors.full_messages)
+      else
+        m.errors.full_messages.to_sentence
+      end
+    end
+
     ActiveRecord::Base.logger = logger
 
     if File.exists?("NUL") # Too lazy now...
