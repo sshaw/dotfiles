@@ -7,7 +7,6 @@ export DISABLE_SPRING=1
 export GOPATH=$HOME/.go
 export GREP_OPTIONS=--color
 export RI=-fansi
-export RUBYOPT=-rubygems
 export EDITOR="emacs --no-init"
 export ESHELL=bash
 export PAGER=less
