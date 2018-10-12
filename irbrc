@@ -107,6 +107,8 @@ if defined?(ActiveRecord) || defined?(Moped)
     Moped.logger = logger
   else
     def arerr(m)
+      return if m.valid?
+
       if defined? table
         table(m.errors.full_messages)
       else
