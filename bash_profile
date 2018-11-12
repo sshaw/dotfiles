@@ -40,6 +40,12 @@ export JAVA_HOME
 
 [ -f ~/.oldpwd ] && export OLDPWD=$(< ~/.oldpwd)
 
+# Export environment variables containing scratch files
+# $SCRPL = $TMPDIR/scratch.pl
+for ext in c go json js pl py rb sql xml yml; do
+    eval "export SCR$(echo $ext | tr a-z A-Z)=${TMPDIR}scratch.$ext"
+done
+
 # if which lsof > /dev/null
 # then
 #     { lsof -i :8808 || gem server --daemon --port 8808; } > /dev/null 2>&1
