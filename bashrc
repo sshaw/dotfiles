@@ -29,7 +29,7 @@ alias gl=' git hist'
 alias gc='git commit' # Never did use `gc`
 alias gp='git pull'
 
-alias rc='rails c'
+alias rc='DISABLE_PRY_RAILS=1 rails c'
 alias pc='padrino c'
 
 alias dm=docker-machine
