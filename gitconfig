@@ -18,7 +18,7 @@
         default = simple
 [alias]
 	br = branch
-	brf = "!f() { git branch --list "*$1*"; }; f"
+	brf = "!f() { git --no-pager branch --list "*$1*"; }; f"
 	co = checkout
         com = !git checkout master
 	ci = commit
