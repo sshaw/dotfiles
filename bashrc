@@ -66,14 +66,14 @@ done
 for f in \
     ~/.rvm/scripts/rvm \
     ~/perl5/perlbrew/etc/bashrc \
-    ~/.gvm/bin/gvm-init.sh; do
-    # /usr/local/share/chruby/chruby.sh \
-    # /usr/local/share/chruby/auto.sh; do
+    ~/.gvm/bin/gvm-init.sh \
+    /usr/local/opt/nvm/nvm.sh \
+    /usr/local/opt/nvm/etc/bash_completion \
+    /usr/local/etc/bash_completion; do
 
     [ -f "$f" ] && source $f
 done
 
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 { type -t rvm && rvm use default; } > /dev/null 2>&1
 
 for cmd in cap rails rspec padrino; do
