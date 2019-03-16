@@ -67,6 +67,7 @@ for f in \
     ~/.rvm/scripts/rvm \
     ~/perl5/perlbrew/etc/bashrc \
     ~/.gvm/bin/gvm-init.sh \
+    ~/.jabba/jabba.sh \
     /usr/local/opt/nvm/nvm.sh \
     /usr/local/opt/nvm/etc/bash_completion \
     /usr/local/etc/bash_completion; do
