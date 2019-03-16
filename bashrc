@@ -296,3 +296,9 @@ rmedir()
    local dir=$1; shift
    [ -n "$dir" ] && find "$dir" -empty -a -type d $* -print0 | xargs -0 rmdir
 }
+
+# Like normal whois but accepts URLs, allowing one to paste URLs from the address bar
+whois()
+{
+    command whois $(ruby -ruri -e'ARGV.each { |e| puts e.start_with?("-") ? e : URI(e).host || e }' -- "$@")
+}
