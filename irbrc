@@ -118,7 +118,7 @@ if defined?(ActiveRecord) || defined?(Moped)
 
     ActiveRecord::Base.logger = logger
 
-    if File.exists?("NUL") # Too lazy now...
+    if File.exist?("NUL") # Too lazy now...
       if defined?(ActiveSupport::LogSubscriber)
         ActiveSupport::LogSubscriber.colorize_logging = false
       else
@@ -129,10 +129,10 @@ if defined?(ActiveRecord) || defined?(Moped)
 end
 
 local = File.join(Dir.pwd, ".irbrc")
-load local if local != __FILE__ && File.exists?(local)
+load local if local != __FILE__ && File.exist?(local)
 
 local = File.join(Dir.pwd, ".irb-history")
-IRB.conf[:HISTORY_FILE] = local if File.exists?(local)
+IRB.conf[:HISTORY_FILE] = local if File.exist?(local)
 
 class HistoryInputMethod < IRB::ReadlineInputMethod
   def gets
