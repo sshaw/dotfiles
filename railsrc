@@ -1,1 +1,1 @@
--m ~/.rails-template.rb -T --skip-spring --skip-turbolinks
+-m ~/.rails-template.rb -TCSPM --skip-spring --skip-turbolinks --skip-coffee --skip-active-storage
