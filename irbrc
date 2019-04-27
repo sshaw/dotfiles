@@ -21,7 +21,13 @@ begin
 rescue LoadError
 end
 
-require "pp"
+begin
+  require "ap"
+rescue LoadError
+  require "pp"
+  ap = pp
+end
+
 require "rubygems"
 
 def i(*m) include *m; end
