@@ -145,14 +145,14 @@ class HistoryInputMethod < IRB::ReadlineInputMethod
     l = super
 
     if ignore_settings.include?("ignoreboth") || ignore_settings.include?("ignorespace")
-      HISTORY.pop and return l if HISTORY[-1].start_with?(" ")
+      HISTORY.pop and return l if HISTORY.size > 0 && HISTORY[-1].start_with?(" ")
     end
 
     if ignore_settings.include?("ignoreboth") || ignore_settings.include?("ignoredups")
-      HISTORY.pop and return l if HISTORY[-1] == HISTORY[-2]
+      HISTORY.pop and return l if HISTORY.size > 1 && HISTORY[-1] == HISTORY[-2]
     end
 
-    HISTORY.pop if ignore_patterns.any? { |pat| HISTORY[-1] =~ pat }
+    HISTORY.pop if HISTORY.size > 0 && ignore_patterns.any? { |pat| HISTORY[-1] =~ pat }
 
     l
   end
