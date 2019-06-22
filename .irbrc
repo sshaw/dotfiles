@@ -112,13 +112,23 @@ if defined?(ActiveRecord) || defined?(Moped)
   if defined?(Moped)
     Moped.logger = logger
   else
-    def arerr(m)
-      return if m.valid?
+    def arerr(model)
+      return if model.valid?
 
       if defined? table
-        table(m.errors.full_messages)
+        table(model.errors.full_messages)
       else
-        m.errors.full_messages.to_sentence
+        model.errors.full_messages.to_sentence
+      end
+    end
+
+    class ActiveRecord::Base
+      def uc(*a)
+        update_column(*a)
+      end
+
+      def self.f(*a)
+        find(*a)
       end
     end
 
