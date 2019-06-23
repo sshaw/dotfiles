@@ -34,6 +34,7 @@ def i(*m) include *m; end
 def j;  jobs;   end
 def q!; quit;   end
 def r!; reload! end
+$E = ENV
 
 # r:some_thang
 # r "some/thang"
