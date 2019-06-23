@@ -3,6 +3,7 @@ gem 'kaminari'
 gem 'shoulda-matchers', :group => 'test'
 
 gem_group :development do
+  gem 'pry-toys'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
 end
