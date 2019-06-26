@@ -11,6 +11,8 @@ alias mt='mapp test'
 alias md='mapp daemon'
 ###
 
+alias ni='npm i'
+
 alias json2ruby='ruby -rjson -rpp -e"pp JSON.parse(File.read(ARGV[0]), :symbolize_names => true)"'
 
 alias pbuild='perl Makefile.PL && make && make test'
