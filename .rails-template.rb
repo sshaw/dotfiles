@@ -6,6 +6,7 @@ gem_group :development do
   gem 'pry-toys'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
+  gem 'quiet_assets'
 end
 
 gem_group :development, :test do
