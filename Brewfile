@@ -47,6 +47,7 @@ brew "yuicompressor"
 brew "wget"
 brew "xz"
 
+cask "licecap"
 cask "mojibar"
 cask "qlcolorcode"
 cask "qlmarkdown"
