@@ -151,6 +151,10 @@ canspell()
     [ -n "$*" ] && { echo "$@" | aspell -a | grep '^&'; } && return 1 || return 0;
 }
 
+exifstrip() {
+    exiftool -all= "$@"
+}
+
 _error()
 {
     echo "$*" >&2
