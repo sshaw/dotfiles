@@ -25,7 +25,7 @@ begin
   require "ap"
 rescue LoadError
   require "pp"
-  ap = pp
+  alias ap pp
 end
 
 require "rubygems"
