@@ -20,7 +20,7 @@ export HISTFILESIZE=1000
 export HISTCONTROL=ignoreboth
 export IGNOREEOF=default
 export IRB_HISTCONTROL=ignoreboth
-export IRB_HISTIGNORE='q!:^\s*r!\b'
+export IRB_HISTIGNORE='q!:^\s*r!'
 export NVM_DIR=$HOME/.nvm
 
 LESS=-FRi
