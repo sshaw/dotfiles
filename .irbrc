@@ -114,6 +114,10 @@ if defined?(ActiveRecord) || defined?(Moped)
   if defined?(Moped)
     Moped.logger = logger
   else
+    def connection
+      ActiveRecord::Base.connection
+    end
+
     def arerr(model)
       return if model.valid?
 
