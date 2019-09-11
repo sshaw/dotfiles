@@ -63,9 +63,9 @@ end
 
 def self.method_missing(name, *args)
   # Commands we don't want to execute
-  return super if %i[x X].freeze.include?(name)
+  return super if [:x, :X].freeze.include?(name)
 
-  system name.to_s, *args
+  system name.to_s, *args.map(&:to_s)
   # TODO: Win???
   # Would be nice to echo nothing
   $?.exitstatus == 127 ? super : $?.exitstatus
