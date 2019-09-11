@@ -1,3 +1,5 @@
+require "pp"
+
 begin
   # Completions are in bondrc
   require "bond"
@@ -24,7 +26,6 @@ end
 begin
   require "ap"
 rescue LoadError
-  require "pp"
   alias ap pp
 end
 
