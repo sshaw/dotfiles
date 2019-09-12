@@ -165,9 +165,9 @@ nsh()
 {
     local init="" path="$(npm config get prefix)/lib/node_modules"
     [ -f ~/.noderc ] && init=$(< ~/.noderc)
-    [ -f ./.noderc ] && init="$init"$'\n'$(< ./.noderc)
+    [ -f ./.noderc -a "$(pwd)" != "$HOME" ] && init="$init"$'\n'$(< ./.noderc)
 
-    NODE_NO_READLINE=1 NODE_PATH="$path" rlwrap node -i -e "$init"
+    NODE_PATH="$path" node -i -e "$init"
 }
 
 # Output gitignore files

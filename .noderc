@@ -1,3 +1,4 @@
+// -*-JavaScript-*-
 // require a module that may not be installed.
 function load(name) {
   try {
@@ -8,4 +9,14 @@ function load(name) {
   }
 }
 
-const r = require, t = load('prototoy');
+const atob = (data) => Buffer.from(data).toString('base64');
+const btoa = (data) => Buffer.from(data, 'base64').toString('ascii');
+
+const r = require,
+      t = load('prototoy'),
+      j = JSON.stringify;
+
+j.dump  = JSON.stringify;
+j.parse = JSON.parse;
+
+util.inspect.replDefaults.sorted = true;
