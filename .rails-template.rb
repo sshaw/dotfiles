@@ -22,6 +22,8 @@ run "touch .irb-history"
 
 after_bundle do
   run "cap install"
+  run "wget -O- -q https://www.gitignore.io/api/rails > .gitignore"
+
   generate "rspec:install"
   append_to_file "spec/rails_helper.rb", <<-SHOULDA.strip_heredoc
 
