@@ -80,7 +80,7 @@ done
 
 { type -t rvm && rvm use default; } > /dev/null 2>&1
 
-for cmd in cap padrino rails rspec sidekiq; do
+for cmd in cap jekyll padrino rails rubocop rspec sidekiq; do
   eval "
     $cmd() {
       local exe=\$(which $cmd)
