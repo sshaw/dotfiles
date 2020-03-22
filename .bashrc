@@ -37,6 +37,8 @@ alias pc='padrino c'
 
 alias dm=docker-machine
 alias dmrun='docker-machine start default && eval "$(docker-machine env default)"'
+alias s3='aws s3'
+alias s3api='aws s3api'
 
 which hub &> /dev/null && alias 'git=hub'
 
@@ -303,6 +305,25 @@ rmedir()
 {
    local dir=$1; shift
    [ -n "$dir" ] && find "$dir" -empty -a -type d $* -print0 | xargs -0 rmdir
+}
+
+# S3: list long (ll) object
+s3llo() {
+    local bucket=$1
+    shift
+
+    local key=$1
+    shift
+
+    aws s3api get-object-acl --bucket "$bucket" --key "$key" "$@"
+}
+
+# S3: list long (ll) bucket
+s3llb() {
+    local bucket=$1
+    shift
+
+    aws s3api get-bucket-acl --bucket "$bucket" "$@"
 }
 
 # Like normal whois but accepts URLs, allowing one to paste URLs from the address bar
