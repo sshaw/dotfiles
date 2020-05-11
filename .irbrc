@@ -20,6 +20,22 @@ end
 
 begin
   require "pry-toys"
+  # shortcuts for Hash.toy()
+  H = Hash
+  A = Array
+  S = String
+
+  def H.t(*a)
+    toy(*a)
+  end
+
+  def A.t(*a)
+    toy(*a)
+  end
+
+  def S.t(*a)
+    toy(*a)
+  end
 rescue LoadError
 end
 
