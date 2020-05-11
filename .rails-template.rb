@@ -15,6 +15,7 @@ end
 
 environment "config.active_record.timestamped_migrations = false"
 environment "config.time_zone = 'Eastern Time (US & Canada)'"
+environment "config.colorize_logging = false", :env => "production"
 
 run "rm -f README.*"
 # Keep local history file; loaded by my ~/.irbrc
