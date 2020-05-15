@@ -9,7 +9,7 @@ gem_group :development do
 end
 
 gem_group :development, :test do
-  gem 'factory_bot'
+  gem 'fabrication'
   gem 'rspec-rails'
 end
 
