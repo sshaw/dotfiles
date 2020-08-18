@@ -307,6 +307,17 @@ rmedir()
    [ -n "$dir" ] && find "$dir" -empty -a -type d $* -print0 | xargs -0 rmdir
 }
 
+# S3 make object public
+s3mkpub() {
+    local bucket=$1
+    shift
+
+    local key=$1
+    shift
+
+    s3api put-object-acl --acl public-read --bucket "$bucket" --key "$key" "$@"
+}
+
 # S3: list long (ll) object
 s3llo() {
     local bucket=$1
