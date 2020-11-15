@@ -45,6 +45,7 @@ brew "the_silver_searcher"
 brew "titlecase"
 brew "yuicompressor"
 brew "wget"
+brew "xsv"
 brew "xz"
 
 cask "licecap"
