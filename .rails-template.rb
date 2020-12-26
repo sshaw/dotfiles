@@ -1,6 +1,9 @@
 # Use single quotes to match the Gemfile Rails generates
 gem 'kaminari'
-gem 'shoulda-matchers', :group => 'test'
+gem_group :test do
+  gem 'shoulda-matchers'
+  gem 'super_diff'
+end
 
 gem_group :development do
   gem 'pry-toys'
