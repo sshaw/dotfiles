@@ -6,9 +6,10 @@ gem_group :test do
 end
 
 gem_group :development do
-  gem 'pry-toys'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
+  gem 'gistory'
+  gem 'pry-toys'
 end
 
 gem_group :development, :test do
