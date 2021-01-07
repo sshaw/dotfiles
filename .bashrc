@@ -307,24 +307,37 @@ rmedir()
    [ -n "$dir" ] && find "$dir" -empty -a -type d $* -print0 | xargs -0 rmdir
 }
 
+_s3_parse_url() {
+    local url=$1
+    url="${url//s3:\/\//}"
+
+    # Good enough
+    __s3_bucket="${url%%/*}"
+    __s3_key="${url#*/}"
+}
+
 # S3 make object public
 s3mkpub() {
-    local bucket=$1
+    local url="$1"
     shift
 
-    local key=$1
-    shift
+    _s3_parse_url "$url"
+
+    local bucket="$__s3_bucket"
+    local key="$__s3_key"
 
     s3api put-object-acl --acl public-read --bucket "$bucket" --key "$key" "$@"
 }
 
 # S3: list long (ll) object
 s3llo() {
-    local bucket=$1
+    local url="$1"
     shift
 
-    local key=$1
-    shift
+    _s3_parse_url "$url"
+
+    local bucket="$__s3_bucket"
+    local key="$__s3_key"
 
     aws s3api get-object-acl --bucket "$bucket" --key "$key" "$@"
 }
