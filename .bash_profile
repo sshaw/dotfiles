@@ -46,8 +46,14 @@ export JAVA_HOME
 for ext in c el go groovy java json js pl py rb sh sql ts txt xml yml yaml; do
     eval "export SCR$(echo $ext | tr a-z A-Z)=${TMPDIR}scratch.$ext"
 done
+unset ext
 
-# if which lsof > /dev/null
-# then
-#     { lsof -i :8808 || gem server --daemon --port 8808; } > /dev/null 2>&1
-# fi
+root="$(brew --prefix asdf 2>/dev/null)"
+if [ -d "$root" ]; then
+    . "$root/asdf.sh"
+    . "$root/etc/bash_completion.d/asdf.bash"
+elif [ -d "$HOME/.asdf" ]; then
+    . "$HOME/.asdf/asdf.sh"
+    . "$HOME/.asdf/completions/asdf.bash"
+fi
+unset root
