@@ -123,6 +123,18 @@ end
 
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 
+if defined?(ShopifyAPI)
+  def shopify(shop, &block)
+    if ShopifyAPI::VERSION.split(".")[0].to_i < 9
+      ShopifyAPI::Session.temp(shop.shopify_domain, shop.shopify_token, &block)
+    else
+      ShopifyAPI::Session.temp(:domain => shop.shopify_domain,
+                               :token => shop.shopify_token,
+                               :api_version => ShopifyAPI::Base.api_version || "2021-01", &block)
+    end
+  end
+end
+
 if defined?(ActiveRecord) || defined?(Moped)
   require "logger"
   logger = Logger.new(STDERR)
