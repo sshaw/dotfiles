@@ -1,4 +1,7 @@
-tap "caskroom/cask"
+# Go here to avoid any admin restrictions on /Applications
+cask_args :appdir => "~/Applications"
+
+tap "homebrew/cask"
 tap "homebrew/bundle"
 
 brew "ansiweather"
