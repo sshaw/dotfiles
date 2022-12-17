@@ -13,6 +13,8 @@ alias md='mapp daemon'
 
 alias ni='npm i'
 alias nr='npm run'
+alias yi='yarn install'
+alias yr='yarn run'
 
 alias json2ruby='ruby -rjson -rpp -e"pp JSON.parse(File.read(ARGV[0]), :symbolize_names => true)"'
 
