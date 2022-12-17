@@ -51,6 +51,8 @@ def i(*m) include *m; end
 def j;  jobs;   end
 def q!; quit;   end
 def r!; reload! end
+def h; helper; end if defined?(helper)
+
 $E = ENV
 
 # r:some_thang
