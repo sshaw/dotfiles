@@ -214,4 +214,7 @@ class HistoryInputMethod < IRB::ReadlineInputMethod
   end
 end
 
-IRB.conf[:SCRIPT] = HistoryInputMethod.new
+# FIXME: Won't work ruby ruby > 2 :(
+if HistoryInputMethod.const_defined?("HISTORY")
+  IRB.conf[:SCRIPT] = HistoryInputMethod.new
+end
