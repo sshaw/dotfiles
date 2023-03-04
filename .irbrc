@@ -125,6 +125,15 @@ end
 
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 
+if defined?(Bigcommerce)
+  def bigcom(shop)
+    config = Bigcommerce::Config.new(:store_hash => shop.platform_id,
+                                     :access_token => shop.access_token,
+                                     :client_id => ENV['BC_CLIENT_ID'])
+    yield Bigcommerce::Connection.build(config)
+  end
+end
+
 if defined?(ShopifyAPI)
   def shopify(shop, &block)
     if ShopifyAPI::VERSION.split(".")[0].to_i < 9
