@@ -357,3 +357,10 @@ whois()
 {
     command whois $(ruby -ruri -e'ARGV.each { |e| puts e.start_with?("-") ? e : URI(e).host || e }' -- "$@")
 }
+
+init_localrc() {
+    local file=~/.bashrc.local
+    [ -f "$file" ] && source "$file"
+}
+
+init_localrc
