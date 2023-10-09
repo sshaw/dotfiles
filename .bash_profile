@@ -50,7 +50,7 @@ unset ext
 
 root="$(brew --prefix asdf 2>/dev/null)"
 if [ -d "$root" ]; then
-    . "$root/asdf.sh"
+    . "$root/libexec/asdf.sh"
     . "$root/etc/bash_completion.d/asdf.bash"
 elif [ -d "$HOME/.asdf" ]; then
     . "$HOME/.asdf/asdf.sh"
