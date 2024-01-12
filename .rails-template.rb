@@ -17,7 +17,6 @@ gem_group :development, :test do
   gem 'rspec-rails'
 end
 
-environment "config.active_record.timestamped_migrations = false"
 environment "config.time_zone = 'Eastern Time (US & Canada)'"
 environment "config.colorize_logging = false", :env => "production"
 
