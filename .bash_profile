@@ -34,6 +34,7 @@ then
 
     # For Cask
     export EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+    export PATH=$PATH:/opt/homebrew/bin
 fi
 
 export LESS
