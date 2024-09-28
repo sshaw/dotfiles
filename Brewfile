@@ -29,7 +29,6 @@ brew "jq"
 brew "lorem"
 brew "maven"
 brew "mono"
-brew "nvm"
 brew "ncdu" # For freeing disk space
 brew "node"
 brew "nginx"
