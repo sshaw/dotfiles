@@ -45,7 +45,7 @@ export JAVA_HOME
 
 # Export environment variables containing scratch files
 # $SCRPL = $TMPDIR/scratch.pl
-for ext in c el go groovy java json js pl py rb sh sql ts txt xml yml yaml; do
+for ext in c el go groovy html java json js pl pm py rb sh sql ts txt xml yml yaml; do
     eval "export SCR$(echo $ext | tr a-z A-Z)=${TMPDIR}scratch.$ext"
 done
 unset ext
