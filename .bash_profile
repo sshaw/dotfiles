@@ -23,6 +23,7 @@ export IGNOREEOF=default
 export IRB_HISTCONTROL=ignoreboth
 export IRB_HISTIGNORE='q!:^\s*r!'
 export NVM_DIR=$HOME/.nvm
+export SHOPIFY_CLI_NO_ANALYTICS=1
 
 LESS=-FRi
 #JAVA_HOME=/usr/java/latest on Fed 10
