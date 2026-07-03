@@ -352,6 +352,11 @@ s3llb() {
     aws s3api get-bucket-acl --bucket "$bucket" "$@"
 }
 
+# S3 bucket size
+s3size() {
+    aws s3 ls --summarize --human-readable --recursive "$1" | tail | grep --color=never 'Total Size'
+}
+
 # Like normal whois but accepts URLs, allowing one to paste URLs from the address bar
 whois()
 {
