@@ -1,0 +1,63 @@
+{
+  "env": {
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
+  },
+  "permissions": {
+    "deny": [
+      "Read(.bundle/**)",
+      "Read(.cache/**)",
+      "Read(.shopify/**)",
+      "Read(.yarn/**)",
+      "Read(*.log)",
+      "Read(*.min.js)",
+      "Read(*.min.map)",
+      "Read(**/.#*)",
+      "Read(**/*.elc)",
+      "Read(**/*~)",
+      "Read(**/\\#*\\#)",
+      "Read(coverage/**)",
+      "Read(log/**)",
+      "Read(logs/**)",
+      "Read(node_modules/**)",
+      "Read(tmp/**)"
+    ]
+  },
+  "enabledPlugins": {
+    "claude-mem@thedotmack": true,
+    "caveman@caveman": true
+  },
+  "extraKnownMarketplaces": {
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
+    },
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    }
+  },
+  "mcpServers": {
+    "shopify-dev-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@shopify/dev-mcp@latest"
+      ]
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ]
+    }
+  },
+  "theme": "auto",
+  "defaultMode": "acceptEdits"
+}
