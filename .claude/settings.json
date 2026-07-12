@@ -40,6 +40,19 @@
       }
     }
   },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dcg"
+          }
+        ]
+      }
+    ]
+  },
   "mcpServers": {
     "shopify-dev-mcp": {
       "type": "stdio",
