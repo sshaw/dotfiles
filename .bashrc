@@ -318,6 +318,14 @@ _s3_parse_url() {
     __s3_key="${url#*/}"
 }
 
+# S3 make bucket
+s3mkb() {
+    local name="$1"
+    shift
+
+    aws s3api --no-cli-pager create-bucket --bucket "$name" "$@"
+}
+
 # S3 make object public
 s3mkpub() {
     local url="$1"
