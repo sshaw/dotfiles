@@ -395,6 +395,18 @@ s3size() {
     aws s3 ls --summarize --human-readable --recursive "$1" | tail | grep --color=never 'Total Size'
 }
 
+# Number of items in the given SQS queue
+sqssize() {
+    local url=$1
+    shift
+
+    [ -z "$url" ] && { _error "queue URL required"; return 1; }
+
+    [[ "$url" =~ ^https:// ]] || url="https://$url"
+
+    aws sqs --no-cli-pager get-queue-attributes --queue-url "$url" --attribute-names ApproximateNumberOfMessages --query Attributes.ApproximateNumberOfMessages
+}
+
 # Like normal whois but accepts URLs, allowing one to paste URLs from the address bar
 whois()
 {
