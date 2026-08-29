@@ -356,6 +356,19 @@ s3mkb() {
     aws s3api --no-cli-pager create-bucket --bucket "$name" "$@"
 }
 
+# S3 make directory
+s3mkdir() {
+    local url="$1"
+    shift
+
+    _s3_parse_url "$url"
+
+    local bucket="$__s3_bucket"
+    local key="$__s3_key"
+
+    s3api --no-cli-pager put-object --bucket "$bucket" --key "${key%/}/" "$@"
+}
+
 # S3 make object public
 s3mkpub() {
     local url="$1"
@@ -366,6 +379,7 @@ s3mkpub() {
     local bucket="$__s3_bucket"
     local key="$__s3_key"
 
+    # Key must end with "/" to create a directory
     s3api put-object-acl --acl public-read --bucket "$bucket" --key "$key" "$@"
 }
 
