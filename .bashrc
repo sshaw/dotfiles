@@ -300,6 +300,81 @@ rake()
     fi
 }
 
+restore_mysql() {
+    if [[ $# -lt 2 || $# -gt 3 ]]; then
+        echo "Usage: restore_mysql <database> <file.sql|file.zip|file.tgz> [username]"
+        return 1
+    fi
+
+    local db="$1"
+    local file="$2"
+    local sql_file
+    local user_opt=()
+    [[ -n "$3" ]] && user_opt=(-u "$3")
+
+    if [[ ! -f "$file" ]]; then
+        echo "Error: File not found: $file"
+        return 1
+    fi
+
+    case "$file" in
+        *.zip)
+            sql_file=$(mktemp -t mysql_restore).sql || return 1
+            unzip -p "$file" '*.sql' > "$sql_file" || {
+                rm -f "$sql_file"
+                return 1
+            }
+            ;;
+        *.tgz|*.tar.gz)
+            sql_file=$(mktemp -t mysql_restore).sql || return 1
+            tar -xOzf "$file" --wildcards '*.sql' > "$sql_file" || {
+                rm -f "$sql_file"
+                return 1
+            }
+            ;;
+        *.gz)
+            sql_file=$(mktemp -t mysql_restore).sql || return 1
+            gunzip -c "$file" > "$sql_file" || {
+                rm -f "$sql_file"
+                return 1
+            }
+            ;;
+        *.sql)
+            sql_file="$file"
+            ;;
+        *)
+            echo "Error: Unsupported file type: $file"
+            return 1
+            ;;
+    esac
+
+    echo "Dropping database: $db"
+    mysqladmin "${user_opt[@]}" drop "$db" -f || {
+        [[ "$sql_file" != "$file" ]] && rm -f "$sql_file"
+        return 1
+    }
+
+    echo "Creating database: $db"
+    mysqladmin "${user_opt[@]}" create "$db" || {
+        [[ "$sql_file" != "$file" ]] && rm -f "$sql_file"
+        return 1
+    }
+
+    echo "Importing $sql_file into $db..."
+    mysql "${user_opt[@]}" "$db" < "$sql_file"
+    local status=$?
+
+    [[ "$sql_file" != "$file" ]] && rm -f "$sql_file"
+
+    if [[ $status -eq 0 ]]; then
+        echo "Database restore completed successfully!"
+    else
+        echo "Database import failed!"
+    fi
+
+    return "$status"
+}
+
 # Handy when you need to paste & process:
 # > tmp
 # > xmllint --format $(tmp)
